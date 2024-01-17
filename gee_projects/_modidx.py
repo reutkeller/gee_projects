@@ -7,4 +7,11 @@ d = { 'settings': { 'branch': 'main',
                 'lib_path': 'gee_projects'},
   'syms': { 'gee_projects.const_vars': {},
             'gee_projects.core': {'gee_projects.core.foo': ('core.html#foo', 'gee_projects/core.py')},
-            'gee_projects.util_func': {}}}
+            'gee_projects.img_sen2': { 'gee_projects.img_sen2.access_s2_image': ( 'satellite_data/sentinel_2.html#access_s2_image',
+                                                                                  'gee_projects/img_sen2.py'),
+                                       'gee_projects.img_sen2.access_s2_image.__init__': ( 'satellite_data/sentinel_2.html#access_s2_image.__init__',
+                                                                                           'gee_projects/img_sen2.py')},
+            'gee_projects.util_func': { 'gee_projects.util_func.gdf_to_featureCollection': ( 'utilities/utilities.html#gdf_to_featurecollection',
+                                                                                             'gee_projects/util_func.py'),
+                                        'gee_projects.util_func.read_gdf': ( 'utilities/utilities.html#read_gdf',
+                                                                             'gee_projects/util_func.py')}}}
