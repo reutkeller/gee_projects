@@ -5,4 +5,6 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://reutkeller.github.io',
                 'git_url': 'https://github.com/reutkeller/gee_projects',
                 'lib_path': 'gee_projects'},
-  'syms': {'gee_projects.core': {'gee_projects.core.foo': ('core.html#foo', 'gee_projects/core.py')}}}
+  'syms': { 'gee_projects.const_vars': {},
+            'gee_projects.core': {'gee_projects.core.foo': ('core.html#foo', 'gee_projects/core.py')},
+            'gee_projects.util_func': {}}}
