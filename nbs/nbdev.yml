@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "gee_projects"
+  site-url: "https://reutkeller.github.io/gee_projects"
+  description: "gee projects"
+  repo-branch: main
+  repo-url: "https://github.com/reutkeller/gee_projects"
