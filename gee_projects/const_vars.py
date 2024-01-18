@@ -5,7 +5,8 @@ __all__ = ['CLOUD_FILTER', 'CLD_PRB_THRESH', 'NIR_DRK_THRESH', 'CLD_PRJ_DIST', '
            'COPERNICUS_S2_CLOUD_PROBABILITY_STR', 's2_img_collection_str', 's2cloudless_str', 'probability_str',
            'clouds_name_bands_str', 'SCL_str', 'SCL_VALUE_int', 'SR_BAND_SCALE_int', 'B8_str', 'dark_pixels_str',
            'direction_int', 'MEAN_SOLAR_AZIMUTH_ANGLE_str', 'int_10', 'cloud_transform_str', 'distance_str',
-           'scale_str', 'scale_str_size', 'shadows_str', 'crs_str', 'scale_2_int', 'cloudmask_str', 'find_band_str']
+           'scale_str', 'scale_str_size', 'shadows_str', 'crs_str', 'scale_2_int', 'cloudmask_str', 'find_band_str',
+           'system_time_start_str', 'date_format_1', 'date_format_2', 'date_str']
 
 # %% ../nbs/utilities/CONSTANTS.ipynb 3
 import geopandas as gpd
@@ -51,3 +52,9 @@ scale_2_int = 20
 cloudmask_str ='cloudmask'
 find_band_str = 'B.*'
 
+
+# %% ../nbs/utilities/CONSTANTS.ipynb 8
+system_time_start_str ='system:time_start'
+date_format_1 = 'YYYY-MM-dd'
+date_format_2 = '%Y-%m-%d'
+date_str='date'

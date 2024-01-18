@@ -9,6 +9,8 @@ import seaborn as sns
 from shapely.geometry import Point
 import json
 import ee
+import geemap
+from datetime import datetime
 
 ee.Authenticate()
 ee.Initialize(project='ee-reutkeller')
@@ -42,7 +44,7 @@ class access_s2_image():
     self.s2_sr = (s2_sr_cld_col_eval.map(mask_s2.add_cld_shdw_mask)
              .map(mask_s2.apply_cld_shdw_mask))
 
-
+  
 
     
 
