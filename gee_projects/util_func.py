@@ -51,29 +51,8 @@ def list_dates(img_coll):
 
   # Map the function over the image collection
   dates_list = img_coll.map(extract_dates).aggregate_array('date').getInfo()
-  print(dates_list)
+  return dates_list
 
-# def extract_dates_from_img_coll(img
-#                                 ):
-#     '''This function extract list of dates of images in imageCollection'''
-#     date = ee.Date(img.get(const.system_time_start_str)).format(const.date_format_1)
-#     return ee.Feature(None, {'date': date})
-# def extract_dates_from_img_coll(img):
-#     '''This function extracts a list of dates from images in an imageCollection'''
-#     dates_list = []
-#     date = ee.Date(img.get(const.system_time_start_str)).format(const.date_format_1)
-#     dates_list.append(date)
-#     return dates_list
-
-# #|export
-# def extract_dates_from_img_coll(img):
-#     '''This function extracts a list of date strings from images in an imageCollection'''
-#     date = ee.Date(img.get(const.system_time_start_str)).format(const.date_format_1)
-#     return [date.getInfo()]  # Convert to string and return as a list
-
-# def extract_dates(img):
-#     date = ee.Date(img.get('system:time_start')).format('YYYY-MM-dd')
-#     return ee.Feature(None, {'date': date})
 
 
 # %% ../nbs/utilities/utilities.ipynb 12
