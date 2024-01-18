@@ -27,16 +27,23 @@ class access_s2_image():
                crs : str , #coordinate reference system to work with
                start_date : str , # Start date for searching images. , 
                end_date : str , # End date for searching images.
-               user_date : str , # The user-provided date of interest; the script accesses the image with the closest available date to the provided date
+
+               one_day_image : bool == True , # when True, image will be generated for the neares date to the provided user_date, else, median image between the two dates will be generated. 
+               user_date : str==None , # The user-provided date of interest; the script accesses the image with the closest available date to the provided date
                ):
     
+    if one_day_image and user_date is None:
+      raise ValueError("Error:if one_day_image is True, user_date cannot be None. Please insert a date or change one_day_image to False to get aggregated image.")
+        
+    if one_day_image is False:
+      print('calculating median image between dates {start_date} / {end_date}')
     self.crs = crs
     self.fc = utils.gdf_to_featureCollection(
       utils.read_gdf(geometry_path=path_to_geometry,crs=self.crs))
     self.start_date=start_date
     self.end_date=end_date
+    self.one_day_image = one_day_image
     self.user_date = user_date
-    
     
     self.fc = utils.gdf_to_featureCollection(utils.read_gdf
                                         (geometry_path=path_to_geometry,crs=self.crs))
@@ -47,14 +54,20 @@ class access_s2_image():
     self.s2_sr = (s2_sr_cld_col_eval.map(mask_s2.add_cld_shdw_mask)
              .map(mask_s2.apply_cld_shdw_mask))
 
-    #get list of available dates of the image collection
+    if one_day_image:
 
-    self.available_dates = utils.list_dates(self.s2_sr)
-    self.closest_date = utils.find_closest_date(date_list = self.available_dates,
-                                                user_date=self.user_date)
+      #get list of available dates of the image collection
+      self.available_dates = utils.list_dates(self.s2_sr)
+      self.closest_date = utils.find_closest_date(date_list = self.available_dates,
+                                                  user_date=self.user_date)
+      
+      #filter image collection to get the image from the closest date :
+      print(f'Requested date: {self.user_date}\n' 
+            f'The nearest date available: {self.closest_date}')
+      
+      day_before_day_after = utils.get_day_before_day_after(self.closest_date)
+      self.img = self.s2_sr.filterDate(day_before_day_after[0], day_before_day_after[1]).mosaic().clip(self.fc)
     
-    #filter image collection to get the image from the closest date :
-    print(f'Requested date: {self.user_date}\n' 
-          f'The nearest date available: {self.closest_date}')
-    self.img = self.s2_sr.filterDate(self.closest_date, self.closest_date).mosaic().clip(self.fc)
+    else:
+      self.img = self.s2_sr.median().clip(self.fc)
 
