@@ -2,7 +2,8 @@
 
 # %% auto 0
 __all__ = ['CLOUD_FILTER', 'CLD_PRB_THRESH', 'NIR_DRK_THRESH', 'CLD_PRJ_DIST', 'BUFFER', 'CLOUDY_PIXEL_PERCENTAGE_STR',
-           'COPERNICUS_S2_CLOUD_PROBABILITY_STR', 's2_img_collection_str', 's2cloudless_str']
+           'COPERNICUS_S2_CLOUD_PROBABILITY_STR', 's2_img_collection_str', 's2cloudless_str', 'probability_str',
+           'clouds_name_bands_str']
 
 # %% ../nbs/utilities/CONSTANTS.ipynb 3
 import geopandas as gpd
@@ -23,4 +24,6 @@ COPERNICUS_S2_CLOUD_PROBABILITY_STR='COPERNICUS/S2_CLOUD_PROBABILITY'
 #S2 image collection
 s2_img_collection_str='COPERNICUS/S2_SR_HARMONIZED'
 s2cloudless_str='s2cloudless'
+probability_str='probability'
+clouds_name_bands_str='clouds'
 
