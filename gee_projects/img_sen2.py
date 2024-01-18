@@ -39,6 +39,8 @@ class access_s2_image():
     
     s2_sr_cld_col_eval = mask_s2.get_s2_sr_cld_col(self.fc, self.start_date, self.end_date)
 
+    self.s2_sr = (s2_sr_cld_col_eval.map(mask_s2.add_cld_shdw_mask)
+             .map(mask_s2.apply_cld_shdw_mask))
 
 
 
