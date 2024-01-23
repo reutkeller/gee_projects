@@ -66,8 +66,8 @@ class access_s2_image():
             f'The nearest date available: {self.closest_date}')
       
       day_before_day_after = utils.get_day_before_day_after(self.closest_date)
-      self.img = self.s2_sr.filterDate(day_before_day_after[0], day_before_day_after[1]).mosaic().clip(self.fc)
+      self.img = self.s2_sr.filterDate(day_before_day_after[0], day_before_day_after[1]).mosaic().clip(self.fc).divide(10000)
     
     else:
-      self.img = self.s2_sr.median().clip(self.fc)
+      self.img = self.s2_sr.median().clip(self.fc).divide(10000)
 
