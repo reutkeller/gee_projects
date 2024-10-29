@@ -17,6 +17,8 @@ ee.Authenticate()
 ee.Initialize(project='ee-reutkeller')
 
 from . import const_vars as const
+from . import img_sen2 as sen2
+from . import util_func as utils
 
 # %% ../nbs/utilities/utilities.ipynb 5
 def read_gdf(geometry_path : str , #path to geometry file (.shp /.gpkg). Path string should be written with r, for example r"path/to/geom/geom.gpkg"
