@@ -11,6 +11,7 @@ from shapely.geometry import Point
 import json
 import ee
 from datetime import datetime, timedelta
+import geemap 
 
 ee.Authenticate()
 ee.Initialize(project='ee-reutkeller')
@@ -119,12 +120,13 @@ def reduce_region(img : ee.Image , # the image that we want to apply the statist
                   ):
     _, ee_reducer  = get_reducer_with_names(reducer)
 
-    reduced_region = img.reduceRegion(
+    reduced_regions = img.reduceRegion(
         reducer=ee_reducer,
         geometry=fc,
         scale=scale,  
         maxPixels= const.max_pixels_float
     )
-    return reduced_region
+
+    return geemap.ee_to_gdf(reduced_regions, selectors=None, verbose=False)
     # return img.set('date', img.date().format('YYYY-MM-dd')).set(reducer,reduced_region.get('NDVI'))
 
